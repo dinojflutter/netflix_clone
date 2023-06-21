@@ -364,6 +364,7 @@ class _HomepageState extends State<Homepage> {
       // ),
 
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white, // Set the selected label color
         unselectedItemColor: Colors.white.withOpacity(0.6),
@@ -385,6 +386,14 @@ class _HomepageState extends State<Homepage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.video_chat),
             label: 'Comming',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.download),
+            label: 'Download',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more),
+            label: 'More',
           ),
         ],
       ),
