@@ -330,31 +330,64 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white, // Set the selected label color
-        unselectedItemColor: Colors.white.withOpacity(0.6),
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        height: 60,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _screens.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              child: Container(
+                width: 100,
+                color: _currentIndex == index
+                    ? Colors.grey
+                    : Color.fromARGB(244, 241, 6, 6),
+                child: Center(
+                  child: Text(
+                    'Screen $index',
+                    style: TextStyle(
+                      color:
+                          _currentIndex == index ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
+
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: Colors.black,
+      //   selectedItemColor: Colors.white, // Set the selected label color
+      //   unselectedItemColor: Colors.white.withOpacity(0.6),
+      //   currentIndex: _currentIndex,
+      //   onTap: (index) {
+      //     setState(() {
+      //       _currentIndex = index;
+      //     });
+      //   },
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.search),
+      //       label: 'Search',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.video_chat),
+      //       label: 'Comming',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
